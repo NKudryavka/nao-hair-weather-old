@@ -16,6 +16,7 @@ $ ->
   onResize()
 
   changeIcon = (hash) ->
+    hash = '#day-0' unless hash
     $('.icon').stop().fadeOut(400)
     $(".#{hash.slice(1)}").fadeIn(400)
 
@@ -35,7 +36,6 @@ $ ->
         
   onLoadAll = ->
     showIcons()
-    location.hash = '#day-0' unless location.hash.length == '#day-0'.length
     changeIcon location.hash
     selecter.find("[value=#{location.hash.slice(1)}]").prop('checked', true)
       .parent().addClass("active")
