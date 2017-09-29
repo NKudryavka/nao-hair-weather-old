@@ -38,7 +38,7 @@ weatherReplaceTable = [
 ]
 
 result = 
-  forecast: [{}, {}, {}]
+  forecast: [{}, {}]
   iconList: []
   forecastTime: {}
   date: []
@@ -66,7 +66,7 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
     else
       result.forecastTime[forecast.publicTime] = [city]
 
-    for daily, day in forecast.forecasts
+    for daily, day in forecast.forecasts.slice(-2)
       unless result.date[day]?
         result.date[day] = daily.date
       else if result.date[day] != daily.date

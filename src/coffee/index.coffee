@@ -1,8 +1,8 @@
 $ ->
   aspectRatio = 0.85794183
   dataPath = 'data/forecast.json'
-  days = [0, 1, 2]
 
+  days = []
   canvas = $('#canvas')
   cover = $('#loading-cover')
   selecter = $('#day-selecter')
@@ -26,7 +26,7 @@ $ ->
   $(window).on 'hashchange', ->
     changeIcon location.hash
 
-  showIcons = (multiplyer) ->
+  showIcons = ->
     for name, pos of cities
       canvas.append $("<span class=\"area\">#{name}</span>").css left: "#{pos.text.x}%", top: "#{pos.text.y}%"
       for day in days
@@ -51,6 +51,7 @@ $ ->
         cover.children('span').text '予報データの読み込みに失敗しました。'
         console.log err
     .done (data) ->
+      days = [0...data.date.length]
       for date, d in data.date
         selecter.children().eq(d).append date.replace /-/g, '/'
       selecter.css 'opacity', 1
