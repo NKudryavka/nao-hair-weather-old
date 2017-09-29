@@ -1,0 +1,132 @@
+forecast: [
+  {
+    旭川: 
+      icon: 'sunny'
+    釧路:
+      icon: 'sunny'
+    札幌:
+      icon: 'sunny'
+    青森:
+      icon: 'sunny'
+    秋田:
+      icon: 'sunny'
+    仙台:
+      icon: 'sunny'
+    新潟:
+      icon: 'sunny'
+    宇都宮:
+      icon: 'sunny'
+    東京:
+      icon: 'sunny'
+    長野:
+      icon: 'sunny'
+    金沢:
+      icon: 'sunny'
+    名古屋:
+      icon: 'sunny'
+    大阪:
+      icon: 'sunny'
+    松江:
+      icon: 'sunny'
+    広島:
+      icon: 'sunny'
+    高松:
+      icon: 'sunny'
+    高知:
+      icon: 'sunny'
+    福岡:
+      icon: 'sunny'
+    鹿児島:
+      icon: 'sunny'
+    那覇:
+      icon: 'sunny'
+      }, {
+    旭川: 
+      icon: 'sunny'
+    釧路:
+      icon: 'sunny'
+    札幌:
+      icon: 'sunny'
+    青森:
+      icon: 'sunny'
+    秋田:
+      icon: 'sunny'
+    仙台:
+      icon: 'sunny'
+    新潟:
+      icon: 'sunny'
+    宇都宮:
+      icon: 'sunny'
+    東京:
+      icon: 'sunny'
+    長野:
+      icon: 'sunny'
+    金沢:
+      icon: 'sunny'
+    名古屋:
+      icon: 'sunny'
+    大阪:
+      icon: 'sunny'
+    松江:
+      icon: 'sunny'
+    広島:
+      icon: 'sunny'
+    高松:
+      icon: 'sunny'
+    高知:
+      icon: 'sunny'
+    福岡:
+      icon: 'sunny'
+    鹿児島:
+      icon: 'sunny'
+    那覇:
+      icon: 'sunny'
+  }, {
+    旭川: 
+      icon: 'sunny'
+    釧路:
+      icon: 'sunny'
+    札幌:
+      icon: 'sunny'
+    青森:
+      icon: 'sunny'
+    秋田:
+      icon: 'sunny'
+    仙台:
+      icon: 'sunny'
+    新潟:
+      icon: 'sunny'
+    宇都宮:
+      icon: 'sunny'
+    東京:
+      icon: 'sunny'
+    長野:
+      icon: 'sunny'
+    金沢:
+      icon: 'sunny'
+    名古屋:
+      icon: 'sunny'
+    大阪:
+      icon: 'sunny'
+    松江:
+      icon: 'sunny'
+    広島:
+      icon: 'sunny'
+    高松:
+      icon: 'sunny'
+    高知:
+      icon: 'sunny'
+    福岡:
+      icon: 'sunny'
+    鹿児島:
+      icon: 'sunny'
+    那覇:
+      icon: 'sunny'
+  }
+]
+  
+iconList: [
+  'sunny'
+]
+forecastTime: 
+  '2017-09-28T17:00:00+0900': 'all'
