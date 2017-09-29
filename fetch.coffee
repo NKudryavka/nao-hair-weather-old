@@ -75,8 +75,10 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
 
       weather = parseWeather daily.image
       result.forecast[day][city] = weather
-      unless weather.icon in result.iconList
-        result.iconList.push weather.icon
+      unless weather.icon in result.iconList.map((v) -> v.src)
+        result.iconList.push
+          src: weather.icon
+          alt: daily.image.title
 
   fs.writeFileSync savePath, JSON.stringify result
 

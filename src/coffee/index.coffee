@@ -18,7 +18,7 @@ $ ->
   changeIcon = (hash) ->
     hash = '#day-0' unless hash
     $('.icon').stop().fadeOut(400)
-    $(".#{hash.slice(1)}").fadeIn(400)
+    $(".#{hash.slice(1)}").fadeIn(400).tooltip()
 
   selecter.on 'change', (event) ->
     location.hash = $(event.target).val()
@@ -58,14 +58,18 @@ $ ->
       cover.hide()
       forecast = data.forecast
 
-      iconNameToImage = (name) ->
+      iconNameToImage = (img) ->
         $(new Image())
-        .on('load', -> loadCount += 1)
-        .addClass('icon')
-        .attr('src', if name.startsWith('http') then name else "img/#{name}.png")
+        .on 'load', -> loadCount += 1
+        .addClass 'icon'
+        .attr 'src', if img.src.startsWith('http') then img.src else "img/#{img.src}.png"
+        .attr 'alt', img.alt
+        .data 'toggle', 'tooltip'
+        .data 'placement', 'top'
+        .attr 'title', img.alt
 
-      for name in data.iconList
-        icons[name] = iconNameToImage name
+      for img in data.iconList
+        icons[img.src] = iconNameToImage img
 
       loadLoop = ->
         if loadCount >= data.iconList.length
