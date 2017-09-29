@@ -24,7 +24,7 @@
     "build:json": "gulp build:json",
     "build:css": "gulp build:css",
     "build:img": "gulp build:img",
-    "build": "npm-run-all -p build:html build:js build:css build:img fetch-weather",
+    "build": "npm-run-all -p build:html build:js build:css build:img -s fetch-weather",
     "fetch-weather": "coffee fetch.coffee",
     "watch": "npm-run-all -p watch:*",
     "watch:html": "gulp watch:html",

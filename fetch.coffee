@@ -1,5 +1,6 @@
 rp = require 'request-promise'
 fs = require 'fs'
+path = require 'path'
 
 savePath = 'site/data/forecast.json'
 baseUrl = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
@@ -39,6 +40,10 @@ result =
   forecast: [{}, {}, {}]
   iconList: []
   forecastTime: {}
+
+saveDir = path.dirname savePath
+unless fs.existsSync saveDir
+  fs.mkdirSync saveDir
 
 parseWeather = (image) ->
   title = image.title
