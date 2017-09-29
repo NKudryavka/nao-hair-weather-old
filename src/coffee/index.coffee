@@ -51,6 +51,9 @@ $ ->
         cover.children('span').text '予報データの読み込みに失敗しました。'
         console.log err
     .done (data) ->
+      for date, d in data.date
+        selecter.children().eq(d).append date.replace /-/g, '/'
+      selecter.css 'opacity', 1
       cover.hide()
       forecast = data.forecast
 

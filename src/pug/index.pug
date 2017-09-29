@@ -3,24 +3,21 @@ html(lang="ja")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes")
-    title 奈緒のお天気
+    title 奈緒のお天気（β）
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous")
     link(rel="stylesheet" href="css/index.css")
   body
     div(class="container")
-      h1 奈緒のお天気
+      h1 奈緒のお天気（β）
       div.row
         div.col.text-center(style="padding: 0;")
           div#day-selecter.btn-group.btn-group-lg(role="group" data-toggle="buttons")
             label.btn.btn-outline-primary
               input(type="radio" name="day" value="day-0")
-              | 今日
             label.btn.btn-outline-primary
               input(type="radio" name="day" value="day-1")
-              | 明日
             label.btn.btn-outline-primary
               input(type="radio" name="day" value="day-2")
-              | 明後日
           div#canvas
           div#loading-cover
            span Now Loading...

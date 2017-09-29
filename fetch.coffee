@@ -1,6 +1,7 @@
 rp = require 'request-promise'
 fs = require 'fs'
 path = require 'path'
+process = require 'process'
 
 savePath = 'site/data/forecast.json'
 baseUrl = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
@@ -40,6 +41,7 @@ result =
   forecast: [{}, {}, {}]
   iconList: []
   forecastTime: {}
+  date: []
 
 saveDir = path.dirname savePath
 unless fs.existsSync saveDir
@@ -65,6 +67,12 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
       result.forecastTime[forecast.publicTime] = [city]
 
     for daily, day in forecast.forecasts
+      unless result.date[day]?
+        result.date[day] = daily.date
+      else if result.date[day] != daily.date
+        console.log 'unmatching date'
+        process.exit(1)
+
       weather = parseWeather daily.image
       result.forecast[day][city] = weather
       unless weather.icon in result.iconList

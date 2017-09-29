@@ -23,6 +23,10 @@
   margin: 0 auto;
 }
 
+#day-selecter {
+  opacity: 0;
+}
+
 .icon, .area {
   position: absolute;
 }
