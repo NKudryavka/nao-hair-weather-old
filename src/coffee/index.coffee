@@ -37,7 +37,7 @@ $ ->
   onLoadAll = ->
     showIcons()
     changeIcon location.hash
-    selecter.find("[value=#{location.hash.slice(1)}]").prop('checked', true)
+    selecter.find("[value=#{if location.hash then location.hash.slice(1) else 'day-0'}]").prop('checked', true)
       .parent().addClass("active")
 
   failCount = 0
