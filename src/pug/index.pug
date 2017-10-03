@@ -1,15 +1,23 @@
 doctype html
+- var title = "奈緒のお天気（β）"
 html(lang="ja")
   head
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes")
-    title 奈緒のお天気（β）
+    title #{title}
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous")
     link(rel="stylesheet" href="css/index.css")
     link(rel="icon" href="img/sunny-occ-rainy.png" type="image/png")
+
+    //- Twitter cards and open graph
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:creator" content="@ssasasssaassasa")
+    meta(property="og:title" content=title)
+    meta(property="og:description" content="神谷奈緒の髪で天気予報")
+    meta(property="og:image" content="https://nkudryavka.github.io/nao-hair-weather/img/screenshot.png")
   body
     div(class="container")
-      h1 奈緒のお天気（β）
+      h1 #{title}
       a(href="https://twitter.com/na_zu_na_110/status/911501302596648960") 元ネタ
       div.row
         div.col.text-center(style="padding: 0;")
