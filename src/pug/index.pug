@@ -1,5 +1,6 @@
 doctype html
 - var title = "奈緒のお天気（β）"
+- var description = "神谷奈緒の髪で天気予報"
 html(lang="ja")
   head
     meta(charset="utf-8")
@@ -14,13 +15,13 @@ html(lang="ja")
     meta(name="twitter:card" content="summary_large_image")
     meta(name="twitter:creator" content="@ssasasssaassasa")
     meta(property="og:title" content=title)
-    meta(property="og:description" content="神谷奈緒の髪で天気予報")
+    meta(property="og:description" content=description)
     meta(property="og:image" content="https://nkudryavka.github.io/nao-hair-weather/img/screenshot.png")
   body
     div(class="container")
       h1 #{title}
       a(href="https://twitter.com/na_zu_na_110/status/911501302596648960" style="margin-right: 1em; vertical-align: top;") 元ネタ
-      a(href="https://twitter.com/share" class="twitter-share-button" data-via="ssasasssaassasa") Tweet
+      a(href="https://twitter.com/share" class="twitter-share-button" data-text=`${title} - ${description}` data-via="ssasasssaassasa") Tweet
       script !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
       div.row
         div.col.text-center(style="padding: 0;")
