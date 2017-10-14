@@ -50,3 +50,8 @@ gulp.task 'watch:json', ->
 
 gulp.task 'watch:css', ->
   gulp.watch path.css, ['build:css']
+
+gulp.task 'cat', ->
+  gulp.src process.argv.slice(3).filter (f) -> !f.startsWith('-')
+    .pipe concat('merged.coffee')
+    .pipe gulp.dest('temp/')
