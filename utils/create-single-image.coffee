@@ -24,6 +24,28 @@ imageNames = [
   'rainy-occ-cloudy',
 ]
 
+legends =
+  '晴れ':
+    icon: 'sunny'
+    x: 30
+    y: 2
+  '曇り':
+    icon: 'cloudy'
+    x: 30
+    y: 12
+  '雨':
+    icon: 'rainy'
+    x: 30
+    y: 22
+  '晴のち雨':
+    icon: 'sunny-to-rainy'
+    x: 47
+    y: 2
+  '晴時々雨':
+    icon: 'sunny-occ-rainy'
+    x: 47
+    y: 12
+
 data = JSON.parse fs.readFileSync dataPath
 
 backSize =
@@ -33,6 +55,10 @@ backSize =
 iconSize =
   width: backSize.width * 7 / 100
   height: backSize.height * 9 / 100
+
+pos = 
+  x: (percent) -> backSize.width * percent / 100
+  y: (percent) -> backSize.height * percent / 100 + 7
 
 Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
 .then (images) ->
@@ -46,12 +72,18 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
     forecastTime = ["#{time.slice(0, 10).replace /-/g, '/'} #{time.slice 11, 16} 時点の予報: #{cit.join ', '}" for time, cit of data.forecastTime].join '  '
     for forecast, day in data.forecast
       image = back.clone()
+      # 予報時刻
       image.print fonts[0], 50, 50, data.date[day].replace /-/g, '/'
       image.print fonts[1], 20, backSize.height - 60, forecastTime, backSize.width - 20*2
+
+      # 凡例
+      for name, val of legends
+        image.composite icons[val.icon], pos.x(val.x), pos.y(val.y)
+        image.print fonts[0], pos.x(val.x+8), pos.y(val.y+3), name
       for cityName, fc of forecast
         city = cities[cityName]
-        image.composite icons[fc.icon], backSize.width*city.icon.x/100, backSize.height*city.icon.y/100
-        image.print fonts[0], backSize.width*city.text.x/100, backSize.height*city.text.y/100 + 7, cityName
+        image.composite icons[fc.icon], pos.x(city.icon.x), pos.y(city.icon.y)
+        image.print fonts[0], pos.x(city.text.x), pos.y(city.text.y), cityName
       image.rgba false
       image.write "site/img/forecast-day-#{day}.png"
 
