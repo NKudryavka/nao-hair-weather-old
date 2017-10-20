@@ -24,6 +24,7 @@ imageNames = [
   'rainy-occ-sunny',
   'rainy-occ-cloudy',
 
+  'stormy',
   'unknown',
 ]
 
