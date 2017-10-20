@@ -23,6 +23,8 @@ imageNames = [
   'cloudy-occ-rainy',
   'rainy-occ-sunny',
   'rainy-occ-cloudy',
+
+  'unknown',
 ]
 
 legends =
@@ -83,7 +85,7 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
         image.print fonts[0], pos.x(val.x+8), pos.y(val.y+3), name
       for cityName, fc of forecast
         city = cities[cityName]
-        image.composite icons[fc.icon], pos.x(city.icon.x), pos.y(city.icon.y)
+        image.composite (icons[fc.icon] or icons.unknown), pos.x(city.icon.x), pos.y(city.icon.y)
         image.print fonts[0], pos.x(city.text.x), pos.y(city.text.y)+8, cityName
       image.rgba false
       image.write "site/img/forecast-day-#{day}.png"
