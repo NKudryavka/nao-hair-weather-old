@@ -31,9 +31,11 @@ cityCodes = [
 
 weatherReplaceTable = [
   ['暴風雨', 'stormy'],
+  ['暴風雪', 'snow-stormy'],
   [/晴れ?/, 'sunny'],
   [/曇り?/, 'cloudy'],
   ['雨', 'rainy'],
+  ['雪', 'snowy'],
   ['時々', '-occ-'],
   ['のち', '-to-'],
 ]

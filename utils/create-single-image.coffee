@@ -3,30 +3,10 @@ fs = require 'fs'
 
 dataPath = 'site/data/forecast.json'
 scale = 1.5
-imageNames = [
-  'map42-2ns',
-
-  'sunny',
-  'cloudy',
-  'rainy',
-
-  'sunny-to-cloudy',
-  'sunny-to-rainy',
-  'cloudy-to-sunny',
-  'cloudy-to-rainy',
-  'rainy-to-sunny',
-  'rainy-to-cloudy',
-
-  'sunny-occ-cloudy',
-  'sunny-occ-rainy',
-  'cloudy-occ-sunny',
-  'cloudy-occ-rainy',
-  'rainy-occ-sunny',
-  'rainy-occ-cloudy',
-
-  'stormy',
-  'unknown',
-]
+backImageName = 'map42-2ns'
+basicWeathers = ['sunny', 'cloudy', 'rainy', 'snowy']
+transitions = ['to', 'occ']
+specialWeathers = ['stormy', 'snow-stormy', 'unknown']
 
 legends =
   '晴れ':
@@ -41,6 +21,10 @@ legends =
     icon: 'rainy'
     x: 30
     y: 25
+  '雪':
+    icon: 'snowy'
+    x: 30
+    y: 35
   '晴のち雨':
     icon: 'sunny-to-rainy'
     x: 47
@@ -49,6 +33,14 @@ legends =
     icon: 'sunny-occ-rainy'
     x: 47
     y: 15
+
+imageNames = [backImageName].concat specialWeathers
+basicWeathers.forEach (w1) ->
+  imageNames.push w1
+  basicWeathers.forEach (w2) ->
+    unless w1 == w2
+      transitions.forEach (gl) ->
+        imageNames.push "#{w1}-#{gl}-#{w2}"
 
 data = JSON.parse fs.readFileSync dataPath
 
