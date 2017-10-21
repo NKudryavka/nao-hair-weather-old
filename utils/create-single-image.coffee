@@ -24,7 +24,7 @@ legends =
   '雪':
     icon: 'snowy'
     x: 30
-    y: 35
+    y: 34
   '晴のち雨':
     icon: 'sunny-to-rainy'
     x: 47
@@ -75,7 +75,8 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
       # 凡例
       for name, val of legends
         image.composite icons[val.icon], pos.x(val.x), pos.y(val.y)
-        image.print fonts[0], pos.x(val.x+8), pos.y(val.y+3), name
+        image.print fonts[0], pos.x(val.x+8), pos.y(val.y+2), name
+
       for cityName, fc of forecast
         city = cities[cityName]
         image.composite (icons[fc.icon] or icons.unknown), pos.x(city.icon.x), pos.y(city.icon.y)
