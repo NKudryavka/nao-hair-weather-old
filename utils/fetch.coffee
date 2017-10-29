@@ -4,6 +4,7 @@ path = require 'path'
 process = require 'process'
 
 savePath = 'site/data/forecast.json'
+msIconPath = 'site/img/ms-icon.png'
 baseUrl = 'http://weather.livedoor.com/forecast/webservice/json/v1?city='
 cityCodes = [
   '012010', # 旭川
@@ -84,6 +85,9 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
           alt: daily.image.title
 
   fs.writeFileSync savePath, JSON.stringify result
+  msIcon = result.forecast[0]['東京'].icon
+  msIcon = unless msIcon.startsWith 'http' then msIcon else 'unknown'
+  fs.copyFileSync "site/img/#{msIcon}.png", msIconPath 
 
 .catch (err) ->
   console.log err
