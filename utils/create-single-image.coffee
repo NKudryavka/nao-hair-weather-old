@@ -70,7 +70,7 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
       image = back.clone()
       # 予報時刻
       image.print fonts[0], 75, 75, data.date[day].replace /-/g, '/'
-      image.print fonts[1], 20, backSize.height - 60, forecastTime, backSize.width - 20*2
+      image.print fonts[1], 20, backSize.height - 90, forecastTime, backSize.width + 100
 
       # 凡例
       for name, val of legends
