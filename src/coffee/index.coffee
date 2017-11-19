@@ -18,7 +18,7 @@ $ ->
   changeIcon = (hash) ->
     hash = '#day-0' unless hash
     $('.icon').stop().fadeOut(400)
-    $(".#{hash.slice(1)}").fadeIn(400).tooltip()
+    $(".#{hash.slice(1)}").fadeIn(400).tooltip html: true
 
   selecter.on 'change', (event) ->
     location.hash = $(event.target).val()
@@ -30,7 +30,9 @@ $ ->
     for name, pos of cities
       canvas.append $("<span class=\"area\">#{name}</span>").css left: "#{pos.text.x}%", top: "#{pos.text.y}%"
       for day in days
-        icon = icons[forecast[day][name].icon].clone().hide()
+        icon = icons[forecast[day][name].weather.icon].clone().hide()
+        temp = forecast[day][name].temperature
+        icon.attr 'title', "#{icon.attr('title')}<br>最高気温 #{if temp.max? then temp.max else '-'}度<br>最低気温 #{if temp.min then temp.min else '-'}度"
         icon.css left: "#{pos.icon.x}%", top: "#{pos.icon.y}%"
         canvas.append icon.addClass("day-#{day}").addClass('icon')
         

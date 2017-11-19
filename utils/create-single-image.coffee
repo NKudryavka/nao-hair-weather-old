@@ -63,7 +63,7 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
   for img, i in imageNames.slice 1
     icons[img] = images[i].scaleToFit iconSize.width, iconSize.height, Jimp.RESIZE_BICUBIC
 
-  Promise.all ['font', 'small'].map (f) -> Jimp.loadFont "utils/font/#{f}.fnt"
+  Promise.all ['font', 'small', 'small-pink', 'small-blue'].map (f) -> Jimp.loadFont "utils/font/#{f}.fnt"
   .then (fonts) ->
     forecastTime = ("#{time.slice(0, 10).replace /-/g, '/'} #{time.slice 11, 16} 時点の予報: #{cit.join ', '}" for time, cit of data.forecastTime).join ' / '
     for forecast, day in data.forecast
@@ -79,8 +79,12 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
 
       for cityName, fc of forecast
         city = cities[cityName]
-        image.composite (icons[fc.icon] or icons.unknown), pos.x(city.icon.x), pos.y(city.icon.y)
+        image.composite (icons[fc.weather.icon] or icons.unknown), pos.x(city.icon.x), pos.y(city.icon.y)
         image.print fonts[0], pos.x(city.text.x), pos.y(city.text.y)+8, cityName
+        image.print fonts[2], pos.x(city?.temperature?.x), pos.y(city?.temperature?.y), if fc?.temperature?.max? then fc.temperature.max else '-'
+        image.print fonts[1], pos.x(city?.temperature?.x) + 35, pos.y(city?.temperature?.y) + -2, '/'
+        image.print fonts[3], pos.x(city?.temperature?.x) + 45, pos.y(city?.temperature?.y), if fc?.temperature?.min? then fc.temperature.min else '-'
+      
       image.rgba false
       image.write "site/img/forecast-day-#{day}.png"
 

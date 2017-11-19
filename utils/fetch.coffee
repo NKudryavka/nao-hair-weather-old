@@ -78,14 +78,18 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
         process.exit(1)
 
       weather = parseWeather daily.image
-      result.forecast[day][city] = weather
+      result.forecast[day][city] =
+        weather: weather
+        temperature: 
+          max: daily.temperature?.max?.celsius
+          min: daily.temperature?.min?.celsius
       unless weather.icon in result.iconList.map((v) -> v.src)
         result.iconList.push
           src: weather.icon
           alt: daily.image.title
 
   fs.writeFileSync savePath, JSON.stringify result
-  msIcon = result.forecast[0]['東京'].icon
+  msIcon = result.forecast[0]['東京'].weather.icon
   msIcon = unless msIcon.startsWith 'http' then msIcon else 'unknown'
   fs.copyFileSync "site/img/#{msIcon}.png", msIconPath 
 
