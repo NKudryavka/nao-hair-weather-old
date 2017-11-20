@@ -81,9 +81,11 @@ Promise.all imageNames.map (img) -> Jimp.read "src/img/#{img}.png"
         city = cities[cityName]
         image.composite (icons[fc.weather.icon] or icons.unknown), pos.x(city.icon.x), pos.y(city.icon.y)
         image.print fonts[0], pos.x(city.text.x), pos.y(city.text.y)+8, cityName
-        image.print fonts[2], pos.x(city?.temperature?.x), pos.y(city?.temperature?.y), if fc?.temperature?.max? then fc.temperature.max else '-'
-        image.print fonts[1], pos.x(city?.temperature?.x) + 35, pos.y(city?.temperature?.y) + -2, '/'
-        image.print fonts[3], pos.x(city?.temperature?.x) + 45, pos.y(city?.temperature?.y), if fc?.temperature?.min? then fc.temperature.min else '-'
+
+        # 気温（最高、/、最低）
+        image.print fonts[2], pos.x(city.temperature.x), pos.y(city.temperature.y), if fc?.temperature?.max? then fc.temperature.max else '-'
+        image.print fonts[1], pos.x(city.temperature.x) + 35, pos.y(city.temperature.y) + -2, '/'
+        image.print fonts[3], pos.x(city.temperature.x) + 45, pos.y(city.temperature.y), if fc?.temperature?.min? then fc.temperature.min else '-'
       
       image.rgba false
       image.write "site/img/forecast-day-#{day}.png"
