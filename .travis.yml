@@ -4,10 +4,10 @@ node_js:
 script: npm run build
 deploy:
   provider: pages
-  skip-cleanup: true
+  #skip-cleanup: true
   github-token: "$GITHUB_TOKEN"
   local-dir: site
-  keep-history: true
+  #keep-history: true
   varbose: true
   on:
     branch: master
