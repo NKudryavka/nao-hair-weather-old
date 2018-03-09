@@ -7,6 +7,7 @@ deploy:
   skip-cleanup: true
   github-token: "$GITHUB_TOKEN"
   local-dir: site
+  keep-history: false
   varbose: true
   on:
     branch: master
