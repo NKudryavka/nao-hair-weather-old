@@ -4,9 +4,9 @@ node_js:
 script: npm run build
 deploy:
   provider: pages
-  skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
-  local_dir: site
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  local-dir: site
   varbose: true
   on:
     branch: master
