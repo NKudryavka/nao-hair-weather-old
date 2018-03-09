@@ -76,7 +76,7 @@ Promise.all (rp(baseUrl + code) for code in cityCodes)
       else if result.date[day] != daily.date
         console.log 'unmatching date'
         console.log daily
-        #process.exit(1)
+        process.exit(1)
 
       weather = parseWeather daily.image
       result.forecast[day][city] =
