@@ -5,9 +5,10 @@ sudo: required
 script: npm run build
 deploy:
   provider: pages
-  skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
-  local_dir: site
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  local-dir: site
+  verbose: true
   on:
     branch: master
 branches:
