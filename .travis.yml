@@ -3,8 +3,8 @@ node_js:
 - 10
 script: npm run build
 deploy:
-  edge:
-    branch: v1.8.47
+  # edge:
+  #   branch: v1.8.47
   provider: pages
   # skip-cleanup: true
   github-token: "$GITHUB_TOKEN"
