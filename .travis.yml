@@ -6,7 +6,7 @@ deploy:
   edge:
     branch: v1.8.47
   provider: pages
-  skip-cleanup: true
+  # skip-cleanup: true
   github-token: "$GITHUB_TOKEN"
   local-dir: site
   verbose: true
